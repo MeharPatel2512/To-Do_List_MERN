@@ -43,8 +43,9 @@ function Home() {
                             <div>
                                 {tasks.map((task, index) => (
                                     <div key={task.id} className="flex mb-4 items-center">
+                                        <Link to={`/tasks/edit/${task._id}`}>x</Link>
                                         <p className="w-full text-grey-darkest">{task.name}</p>
-                                        <Link to={`/tasks/edit/${task._id}`} className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">{task.completed}</Link>
+                                        <Link to={`/tasks/edit/${task._id}`} className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded hover:text-white text-green border-green hover:bg-green">Edit</Link>
                                         <Link to={`/tasks/delete/${task._id}`} className="flex-no-shrink p-2 ml-2 border-2 rounded text-red border-red hover:text-white hover:bg-red">Remove</Link>
                                     </div>
                                 ))}
@@ -55,56 +56,7 @@ function Home() {
             </div>
         </div>
 
-            // <div className='p-4'>
-            //     <div className='flex justify-between items-center'>
-            //         <h1 className='text-3xl my-8'>To-Do List</h1>
-            //         <Link to="/tasks/create">
-            //             <MdOutlineAddBox className='text-sky-800 text-4xl' />
-            //         </Link>
-
-            //     </div>
-            //     {loading ? (
-            //         <Spinner />
-            //     ) : (
-            //         <table className='w-full border-separate border-spacing-2'>
-            //             <thead>
-            //                 <tr>
-            //                     <th className='border border-slate-600 rounded-md'>Serial No.</th>
-            //                     <th className='border border-slate-600 rounded-md'>Task Name</th>
-            //                     <th className='border border-slate-600 rounded-md'>Status</th>
-            //                 </tr>
-            //             </thead>
-            //             <tbody>
-            //                 {tasks.map((task, index) => (
-            //                     <tr key={task.id} className='h-8'>
-            //                         <td className='border border-slate-700 rounded-md text-center'>
-            //                             {index + 1}
-            //                         </td>
-            //                         <td className='border border-slate-700 rounded-md text-center'>
-            //                             {task.name}
-            //                         </td>
-            //                         <td className='border border-slate-700 rounded-md text-center'>
-            //                             {task.completed}
-            //                         </td>
-            //                         <td className='flex border border-slate-700 rounded-md text-center'>
-            //                             <Link to={`/tasks/details/${task._id}`} className='ml-8 mr-5'>
-            //                                 <BsInfoCircle className='text-2xl text-green-800' />
-            //                             </Link>
-            //                             <Link to={`/tasks/edit/${task._id}`} className='mr-5'>
-            //                                 <AiOutlineEdit className='text-2xl text-green-800' />
-            //                             </Link>
-            //                             <Link to={`/tasks/delete/${task._id}`}>
-            //                                 <MdOutlineDelete className='text-2xl text-green-800' />
-            //                             </Link>
-            //                         </td>
-            //                     </tr>
-            //                 ))}
-            //             </tbody>
-            //         </table>
-            // )}
-
-            // </div>
     )
 }
 
-                    export default Home
+export default Home
