@@ -1,57 +1,28 @@
-import express, { request } from "express"
+import express, { request, response } from "express"
 import { PORT, mongoDbUrl } from './config.js'
 import mongoose from "mongoose"
-import { Task } from "./model/taskSchema.js"
+import taskRoute from './routes/tasksRoute.js'
+import { Task } from './model/taskSchema.js'
+import cors from 'cors'
 
 const app = express()
 
 app.use(express.json())
 // app.use(express.urlencoded({ extended: true }))
 
-// app.use(express.static('public'))    
+// app.use(express.static('public')) 
 
-app.get("/", (request, response) => {
-    return response.status(234).send('Welcome!!')
-})
+app.use(cors())
+app.use('/', taskRoute)
 
-app.post('/tasks', async (req, res) => {
-    try{
-        if(
-            !req.body.name
-        ){
-            return res.status(400).send("Please provide all the required fields")
-        }
-        
-        const newtask = {
-            name : req.body.name
-        }
-        const task = await Task.create(newtask)
-        return res.status(201).send(task)
-    }
-    catch(err){
-        console.log(err);
-        res.status(500).send(err.message)
-    }
-})
+// Default
+// Custom
+// app.use(cors({
+//     origin: "http://loaclhost:5173",
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     allowedHeaders: ['Content-type']
+// }))
 
-app.get("/tasks", async (req, res) => {
-    try{
-        const tasks = await Task.find({})
-        return res.status(200).send(tasks)
-    }
-    catch(err){
-        console.log(err);
-    }
-})
-
-app.post('/checkcomplete:id', async (req, res) => {
-    try{
-        console.log(req.params);
-    }
-    catch(err){
-        console.log(err);
-    }
-})
 
 mongoose
     .connect(mongoDbUrl)
