@@ -3,10 +3,7 @@
 // import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import CreateTask from './components/CreateTask.jsx'
-import DeleteTask from './components/DeleteTask.jsx'
 import EditTask from './components/EditTask.jsx'
-import ShowTask from './components/ShowTask.jsx'
 import Home from './components/Home.jsx'
 
 function App() {
@@ -18,10 +15,7 @@ function App() {
       To-do List!!
       </h1>
       <Routes>
-        <Route path='/tasks/create' element={<CreateTask />}></Route>
-        <Route path='/tasks/delete/:id' element={<DeleteTask />}></Route>
         <Route path='/tasks/edit/:id' element={<EditTask />}></Route>
-        <Route path='/tasks/show:id' element={<ShowTask />}></Route>
         <Route path='/' element={<Home />}></Route>
       </Routes>
       <trial />
