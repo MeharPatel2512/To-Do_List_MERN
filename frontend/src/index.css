@@ -2,3 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+.notdonetaskname{
+    color: black;
+    font-weight: 500;
+}
+
+.donetaskname{
+    color: rgb(68, 68, 68);
+    font-style: italic;
+}
+
+.hidden{
+    display: hidden;
+}
