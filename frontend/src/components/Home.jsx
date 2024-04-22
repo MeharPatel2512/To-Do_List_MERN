@@ -6,7 +6,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 
 function Home() {
-    const navigate = useNavigate()
     const [tasks, setTasks] = useState([])
     const [loading, setLoading] = useState(false)
     useEffect(() => {
@@ -99,9 +98,9 @@ function Home() {
                                 {tasks.map((task, index) => (
                                     <div key={task.id} className="flex mb-4 items-center">
                                         {task.completed ? (
-                                            <button className='border-2 rounded border-green p-2' onClick={() => markasdone(task._id, task.name)}>Done</button>
+                                            <button className='border-2 rounded border-green p-2' onClick={() => {markasdone(task._id, task.name)}}>Done</button>
                                         ) : (
-                                            <button onClick={markasundone(task._id, task.name)}>Not Done</button>
+                                            <button className='border-2 rounded border-green p-2' onClick={markasundone(task._id, task.name)}>Not Done</button>
                                         )}
                                         <p className="w-full text-grey-darkest">{task.name}</p>
                                         <Link to={`/tasks/edit/${task._id}`} className="flex-no-shrink p-2 ml-4 mr-2 border-2 rounded text-green border-green">Edit</Link>
